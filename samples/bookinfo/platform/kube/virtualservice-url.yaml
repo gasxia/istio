@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bookinfo
+spec:
+  hosts:
+    - njapi.vxiaocheng.com
+      iapi.vxiaocheng.com
+      devapi.vxiaocheng.com
+  gateways:
+    - bookinfo-gateway
+  http:
+    - match:
+        - uri:
+            exact: /details
+      route:
+        - destination:
+            host: details

@@ -16,6 +16,9 @@
 
 
 from __future__ import print_function
+
+from pprint import pprint
+
 from flask_bootstrap import Bootstrap
 from flask import Flask, request, session, render_template, redirect, url_for
 from flask import _request_ctx_stack as stack
@@ -342,6 +345,8 @@ def getProductReviews(product_id, headers):
     for _ in range(2):
         try:
             url = reviews['name'] + "/" + reviews['endpoint'] + "/" + str(product_id)
+            pprint(headers)
+            print(url)
             res = requests.get(url, headers=headers, timeout=3.0)
         except BaseException:
             res = None
